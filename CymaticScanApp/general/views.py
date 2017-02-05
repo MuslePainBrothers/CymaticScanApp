@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.views import generic
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the general index.")
+class IndexView(generic.TemplateView):
+    template_name = 'index.html'
