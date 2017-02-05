@@ -9,6 +9,5 @@
 ##開発環境
 * 言語 python
 * フレームワーク django
->>>>>>> b40db3204d4e00a81cd4b4bfde228859c30dc20f
 
 ##画面
