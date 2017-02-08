@@ -12,10 +12,10 @@
 
 ##画面
 * トップ画面
-![top.png](https://github.com/MuslePainBrothers/CymaticScanApp/develop/screen_shot/top.png)
+![top.jpeg](https://raw.githubusercontent.com/MuslePainBrothers/CymaticScanApp/develop/screen_shot/top.jpeg)
 
 * 質問画面
-![question.png](https://github.com/MuslePainBrothers/CymaticScanApp/develop/top.png)
+![question.jpeg](https://raw.githubusercontent.com/MuslePainBrothers/CymaticScanApp/develop/screen_shot/question.jpeg)
 
 * 結果画面
-![result.png](https://github.com/MuslePainBrothers/CymaticScanApp/develop/top.png)
+![result.jpeg](https://raw.githubusercontent.com/MuslePainBrothers/CymaticScanApp/develop/screen_shot/result.jpeg)
