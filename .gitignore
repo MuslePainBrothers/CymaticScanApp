@@ -1,7 +1,4 @@
 .idea
 .DS_Store
-_pycache_
-__pycache__
-_pycache_/
 __pycache__/
 *.py[cod]
