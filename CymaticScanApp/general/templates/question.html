@@ -6,9 +6,25 @@
 </head>
 <body>
     <h1>質問画面</h1>
-    （質問はチェックボックス）
+    次の質問に答えてください
 
     <br><br>
+
+    <form action="{% url 'general:result' %}" method="get">{% csrf_token %}
+        <p>
+            Q1 あなたはMSYをみてどう思いますか？
+        </p>
+
+        <p>
+            <input type="radio" name="riyu" value="1" checked="checked">面白い
+            <input type="radio" name="riyu" value="2">カッコイイ
+            <input type="radio" name="riyu" value="3">アスペ
+        </p>
+
+        <p>
+            <input type="submit" value="送信する">
+        </p>
+    </form>
 
 </body>
 </html>
