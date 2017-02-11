@@ -10,21 +10,36 @@
 
     <br><br>
 
-    <form action="{% url 'general:result' %}" method="get">{% csrf_token %}
-        <p>
-            Q1 あなたはMSYをみてどう思いますか？
-        </p>
+    <form action="{% url 'general:result' question.id %}" method="post">
 
-        <p>
-            <input type="radio" name="riyu" value="1" checked="checked">面白い
-            <input type="radio" name="riyu" value="2">カッコイイ
-            <input type="radio" name="riyu" value="3">アスペ
-        </p>
-
-        <p>
-            <input type="submit" value="送信する">
-        </p>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'general:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% csrf_token %}
+        {% for answer in question.answer_set.all %}
+            <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" />
+            <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br />
+        {% endfor %}
+        <input type="submit" value="送信" />
+    {% endfor %}
     </form>
+
+
+{#    <form action="{% url 'general:result' %}" method="get">{% csrf_token %}#}
+{#        <p>#}
+{#            Q1 あなたはMSYをみてどう思いますか？#}
+{#        </p>#}
+{##}
+{#        <p>#}
+{#            <input type="radio" name="riyu" value="1" checked="checked">面白い#}
+{#            <input type="radio" name="riyu" value="2">カッコイイ#}
+{#            <input type="radio" name="riyu" value="3">アスペ#}
+{#        </p>#}
+{##}
+{#        <p>#}
+{#            <input type="submit" value="送信する">#}
+{#        </p>#}
+{#    </form>#}
 
 </body>
 </html>
