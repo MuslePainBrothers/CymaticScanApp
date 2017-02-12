@@ -8,7 +8,7 @@ class Question(models.Model):
     question_text = models.TextField(max_length=200)
 
     def __str__(self):
-        return self.question_text
+        return self.title
 
 
 class Answer(models.Model):
