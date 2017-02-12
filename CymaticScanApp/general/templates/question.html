@@ -10,19 +10,21 @@
 
     <br><br>
 
-    <form action="{% url 'general:result' question.id %}" method="post">
+
+{#    <form action="{% url 'general:result' question.id %}" method="post">#}
 
     {% for question in latest_question_list %}
-        <li><a href="{% url 'general:detail' question.id %}">{{ question.question_text }}</a></li>
+        <li>{{ question.question_text }}</li>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         {% csrf_token %}
         {% for answer in question.answer_set.all %}
             <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" />
             <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br />
         {% endfor %}
-        <input type="submit" value="送信" />
     {% endfor %}
-    </form>
+
+    <input type="submit" value="送信" />
+{#    </form>#}
 
 
 {#    <form action="{% url 'general:result' %}" method="get">{% csrf_token %}#}
