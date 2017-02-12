@@ -5,26 +5,35 @@
     <title>CymaticScanApp</title>
 </head>
 <body>
-    <h1>質問画面</h1>
-    次の質問に答えてください
+<h1>質問画面</h1>
+次の質問に答えてください
 
-    <br><br>
+<HR>
 
-    <form action="{% url 'general:result' %}" method="get">{% csrf_token %}
-        <p>
-            Q1 あなたはMSYをみてどう思いますか？
-        </p>
+<form action="{% url 'general:result' %}" method="get">
+    <!--質問-->
+    {% for question in latest_question_list %}
+        {% csrf_token %}
 
-        <p>
-            <input type="radio" name="riyu" value="1" checked="checked">面白い
-            <input type="radio" name="riyu" value="2">カッコイイ
-            <input type="radio" name="riyu" value="3">アスペ
-        </p>
+        問題{{ forloop.counter }}
 
-        <p>
-            <input type="submit" value="送信する">
-        </p>
-    </form>
+        {% with forloop.counter as count %}
+            <p>title = {{ question.title }}</p>
+            <p>text = {{ question.question_text }}</p>
+
+            <!--答え-->
+            {% for answer in question.answer_set.all %}
+                <input type="radio" name="answer{{ count }}" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
+                {{ answer.answer_text }}
+                <br>
+            {% endfor %}
+
+            <HR>
+        {% endwith %}
+    {% endfor %}
+
+    <input type="submit" value="送信"/>
+</form>
 
 </body>
 </html>
