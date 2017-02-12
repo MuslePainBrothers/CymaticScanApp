@@ -5,26 +5,30 @@
     <title>CymaticScanApp</title>
 </head>
 <body>
-    <h1>質問画面</h1>
-    次の質問に答えてください
+<h1>質問画面</h1>
+次の質問に答えてください
 
-    <br><br>
+<HR>
 
+<form action="{% url 'general:result' %}" method="post">
     {% for question in latest_question_list %}
-        <form action="{% url 'general:result' question.id %}" method="post">
-            {% csrf_token %}
+    {% csrf_token %}
 
-            <li>{{ question.question_text }}</li>
-            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                {% for answer in question.answer_set.all %}
-                    <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" />
-                    <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br />
-                {% endfor %}
-            {% endfor %}
+    <p>title = {{ question.title }}</p>
+    <p>text = {{ question.question_text }}</p>
 
-        <input type="submit" value="送信" />
-    </form>
+        {% for answer in question.answer_set.all %}
+            <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
+            <label for="answer{{ forloop.counter }}">
+                {{ answer.answer_text }}
+            </label>
+            <br>
+        {% endfor %}
+        <HR>
+    {% endfor %}
 
+    <input type="submit" value="送信"/>
+</form>
 
 </body>
 </html>
