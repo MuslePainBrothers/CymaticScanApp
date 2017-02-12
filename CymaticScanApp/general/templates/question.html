@@ -13,23 +13,23 @@
 <form action="{% url 'general:result' %}" method="get">
     <!--質問-->
     {% for question in latest_question_list %}
-    {% csrf_token %}
+        {% csrf_token %}
 
-    {% with forloop.counter as count %}
-    <p>title = {{ question.title }}</p>
-    <p>text = {{ question.question_text }}</p>
+        問題{{ forloop.counter }}
 
-        <!--答え-->
-        {% for answer in question.answer_set.all %}
-            <input type="radio" name="answer{{count}}" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
-            <label for="answer{{ forloop.counter }}">
+        {% with forloop.counter as count %}
+            <p>title = {{ question.title }}</p>
+            <p>text = {{ question.question_text }}</p>
+
+            <!--答え-->
+            {% for answer in question.answer_set.all %}
+                <input type="radio" name="answer{{ count }}" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
                 {{ answer.answer_text }}
-            </label>
-            <br>
-        {% endfor %}
+                <br>
+            {% endfor %}
 
-    <HR>
-    {% endwith %}
+            <HR>
+        {% endwith %}
     {% endfor %}
 
     <input type="submit" value="送信"/>
