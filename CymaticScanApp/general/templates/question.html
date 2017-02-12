@@ -10,21 +10,26 @@
 
 <HR>
 
-<form action="{% url 'general:result' %}" method="post">
+<form action="{% url 'general:result' %}" method="get">
+    <!--質問-->
     {% for question in latest_question_list %}
     {% csrf_token %}
 
+    {% with forloop.counter as count %}
     <p>title = {{ question.title }}</p>
     <p>text = {{ question.question_text }}</p>
 
+        <!--答え-->
         {% for answer in question.answer_set.all %}
-            <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
+            <input type="radio" name="answer{{count}}" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
             <label for="answer{{ forloop.counter }}">
                 {{ answer.answer_text }}
             </label>
             <br>
         {% endfor %}
-        <HR>
+
+    <HR>
+    {% endwith %}
     {% endfor %}
 
     <input type="submit" value="送信"/>

@@ -12,6 +12,7 @@ class QuestionView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(QuestionView, self).get_context_data(**kwargs)
         context['latest_question_list'] = Question.objects.all()
+        context['count'] = 1
         return context
 
 
@@ -21,4 +22,5 @@ class ShowQuesListView(generic.TemplateView):
 
 class ResultView(generic.TemplateView):
     template_name = "result.html"
+    print("result")
 
