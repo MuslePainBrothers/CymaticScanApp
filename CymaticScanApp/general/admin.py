@@ -13,9 +13,10 @@ class QuestionAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
     fieldsets = [
         ('答え', {'fields': ['text']}),
-        ('パラメータA', {'fields': ['para_A']}),
-        ('パラメータB', {'fields': ['para_B']}),
-        ('パラメータC', {'fields': ['para_C']}),
+        ('キチ度', {'fields': ['para_crazy']}),
+        ('アスペ度', {'fields': ['para_aspect']}),
+        ('池沼度', {'fields': ['para_intdis']}),
+        ('狂気度', {'fields': ['para_madness']}),
     ]
 
 admin.site.register(Question, QuestionAdmin)

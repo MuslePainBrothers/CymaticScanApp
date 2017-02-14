@@ -12,8 +12,20 @@
 デバッグ用<br>
 
 {% for ques, your_ans in ques_your_answer %}
-    {{ques}}, {{your_ans}}, [{{your_ans.para_A}}, {{your_ans.para_B}}, {{your_ans.para_C}}]<br>
+    {{ques}}, {{your_ans}}, [{{your_ans.para_crazy}}, {{your_ans.para_aspect}},
+    {{your_ans.para_intdis}}, {{your_ans.para_madness}}]<br>
 {% endfor %}
+
+<br>
+
+トータルスコア<br>
+{% for score_name, total_score in score_name_total_score %}
+    {{ score_name }}: total = {{ total_score }}<br>
+{% endfor %}
+
+<br>
+診断結果<br>
+あなたは {{ result_text }} です<br>
 
 </body>
 </html>
