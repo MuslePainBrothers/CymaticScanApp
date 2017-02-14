@@ -7,5 +7,13 @@
 <body>
 <h1>結果画面</h1>
 
+<HR>
+
+デバッグ用<br>
+
+{% for ques, your_ans in ques_your_answer %}
+    {{ques}}, {{your_ans}}, [{{your_ans.para_A}}, {{your_ans.para_B}}, {{your_ans.para_C}}]<br>
+{% endfor %}
+
 </body>
 </html>

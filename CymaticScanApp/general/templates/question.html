@@ -7,5 +7,28 @@
 <body>
 <h1>質問画面</h1>
 
+    <HR>
+
+    <form action="{% url 'general:result' %}" method="post">
+        {% csrf_token %}
+
+            {% for question in questions %}
+
+                {% with forloop.counter as count %}
+                    title = {{ question.title }}<br>
+                    text = {{ question.text }}<br>
+
+                    {% for answer in question.answer.all %}
+                        <input type="radio" name="answer{{count}}" value="{{answer.id}}" />
+                        {{ answer.text }} {{answer.para_A}}<br>
+                    {% endfor %}
+
+                {% endwith %}
+
+            <HR>
+        {% endfor %}
+        <input type="submit" value="送信"/>
+    </form>
+
 </body>
 </html>
