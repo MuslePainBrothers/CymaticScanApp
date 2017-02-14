@@ -4,15 +4,18 @@ from .models import Question, Answer
 
 class QuestionAdmin(admin.ModelAdmin):
     fieldsets = [
-       ('title', {'fields': ['title']}),
-       ('text', {'fields': ['text']}),
+        ('質問タイトル', {'fields': ['title']}),
+        ('内容', {'fields': ['text']}),
+        ('答え', {'fields': ['answer']}),
     ]
 
 
 class AnswerAdmin(admin.ModelAdmin):
     fieldsets = [
-       ('question', {'fields': ['question']}),
-       ('text', {'fields': ['text']}),
+        ('答え', {'fields': ['text']}),
+        ('パラメータA', {'fields': ['para_A']}),
+        ('パラメータB', {'fields': ['para_B']}),
+        ('パラメータC', {'fields': ['para_C']}),
     ]
 
 admin.site.register(Question, QuestionAdmin)
