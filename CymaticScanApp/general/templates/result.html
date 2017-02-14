@@ -5,17 +5,27 @@
     <title>CymaticScanApp</title>
 </head>
 <body>
-    <h1>結果画面</h1>
+<h1>結果画面</h1>
 
-    CymaticScanの診断結果は…
+<HR>
 
-    <br><br>
+デバッグ用<br>
 
-    あなたは "アスペ" です
+{% for ques, your_ans in ques_your_answer %}
+    {{ques}}, {{your_ans}}, [{{your_ans.para_crazy}}, {{your_ans.para_aspect}},
+    {{your_ans.para_intdis}}, {{your_ans.para_madness}}]<br>
+{% endfor %}
 
-    <br><br>
+<br>
 
-    <input type="button" value="top画面に戻る" onclick="location.href='{% url "general:top" %}'" />
+トータルスコア<br>
+{% for score_name, total_score in score_name_total_score %}
+    {{ score_name }}: total = {{ total_score }}<br>
+{% endfor %}
+
+<br>
+診断結果<br>
+あなたは {{ result_text }} です<br>
 
 </body>
 </html>

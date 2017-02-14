@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Question
+from .models import Question, Answer
 
 
 class TopView(generic.TemplateView):
@@ -9,18 +9,55 @@ class TopView(generic.TemplateView):
 class QuestionView(generic.TemplateView):
     template_name = "question.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, *args, **kwargs):
         context = super(QuestionView, self).get_context_data(**kwargs)
-        context['latest_question_list'] = Question.objects.all()
-        context['count'] = 1
+        context["questions"] = Question.objects.all()
+        context["count"] = 0
         return context
-
-
-class ShowQuesListView(generic.TemplateView):
-    template_name = "ques_list.html"
 
 
 class ResultView(generic.TemplateView):
     template_name = "result.html"
-    print("result")
 
+    def post(self, request, *args, **kwargs):
+        ques = Question.objects.order_by("id")
+
+        # ユーザの解答
+        list_your_answer = []
+        for i in range(0, len(ques)):
+            list_your_answer.append(Answer.objects.get(pk=self.request.POST["answer"+str(i+1)]))
+
+        total_score = [0, 0, 0, 0]
+        score_name = ["キチ度", "アスペ度", "池沼度", "狂気度"]
+
+        # パラメータ計算（サンプル）
+        for ans in list_your_answer:
+            print(ans, ans.para_crazy, ans.para_aspect, ans.para_intdis, ans.para_madness)
+            total_score[0] += ans.para_crazy
+            total_score[1] += ans.para_aspect
+            total_score[2] += ans.para_intdis
+            total_score[3] += ans.para_madness
+
+        # デバッグ用
+        ques_your_answer = zip(ques, list_your_answer)
+        score_name_total_score = zip(score_name, total_score)
+
+        # 結果のテキスト
+        if total_score[0] > 4:
+            result_text = "軽度のキチ"
+        elif total_score[1] > 5:
+            result_text = "軽度のアスペ"
+        elif total_score[2] > 3:
+            result_text = "どこにでもいる池沼"
+        elif total_score[3] > 6:
+            result_text = "かなりやばいやつ"
+        else:
+            result_text = "ふつうの人"
+
+        context = self.get_context_data(**kwargs)
+        context["list_your_answer"] = list_your_answer
+        context["ques_your_answer"] = ques_your_answer
+        context["score_name_total_score"] = score_name_total_score
+        context["result_text"] = result_text
+
+        return self.render_to_response(context)
