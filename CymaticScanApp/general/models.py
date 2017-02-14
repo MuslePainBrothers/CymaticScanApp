@@ -3,9 +3,10 @@ from django.db import models
 
 class Answer(models.Model):
     text = models.CharField(max_length=200)
-    para_A = models.IntegerField()
-    para_B = models.IntegerField()
-    para_C = models.IntegerField()
+    para_crazy = models.IntegerField()
+    para_aspect = models.IntegerField()
+    para_intdis = models.IntegerField()
+    para_madness = models.IntegerField()
 
     def __str__(self):
         return self.text
