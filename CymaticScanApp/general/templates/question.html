@@ -20,7 +20,7 @@
 
                     {% for answer in question.answer.all %}
                         <input type="radio" name="answer{{count}}" value="{{answer.id}}" />
-                        {{ answer.text }} {{answer.para_A}}<br>
+                        {{ answer.text }}<br>
                     {% endfor %}
 
                 {% endwith %}
