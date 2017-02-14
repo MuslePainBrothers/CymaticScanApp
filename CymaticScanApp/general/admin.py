@@ -5,7 +5,15 @@ from .models import Question, Answer
 class QuestionAdmin(admin.ModelAdmin):
     fieldsets = [
        ('title', {'fields': ['title']}),
-       ('question_text', {'fields': ['question_text']}),
+       ('text', {'fields': ['text']}),
     ]
+
+
+class AnswerAdmin(admin.ModelAdmin):
+    fieldsets = [
+       ('question', {'fields': ['question']}),
+       ('text', {'fields': ['text']}),
+    ]
+
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Answer)
+admin.site.register(Answer, AnswerAdmin)
