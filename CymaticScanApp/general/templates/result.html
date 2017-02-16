@@ -41,26 +41,18 @@
 
 <h1>結果画面</h1>
 
-list_name = {{list_name}}
-<br>
-{% for name in list_name %}
-    {{ name }}
-{% endfor %}
-
-
 <HR>
 <canvas id="canvas" width="50" height="30"></canvas>
 <script type="text/javascript">
-    var split_namelist = "{{list_name}}".split(",");
     var testData = {
-        labels: [split_namelist[0], split_namelist[1], split_namelist[2], split_namelist[3]],
+        labels: ["キチ", "アスペ", "なんとか", "かんとか"],
         datasets: [
             {
                 fill: false, //線の中を塗るかどうか。falseで塗らない
                 borderColor: "rgba(0,222,122,0.5)", //線の色
                 pointBackgroundColor: "rgba(0,222,122,0.5)", //ポイントの背景色
                 pointBorderColor: "rgba(0,222,122,0.5)", //ポイントの境界線の色
-                data: [3, 4, 2, 1]
+                data: ["{{para_A}}", "{{para_B}}", "{{para_C}}", "{{para_D}}"]
             },
             {
                 pointRadius: 0, //これでpointは描画されない
@@ -82,7 +74,7 @@ list_name = {{list_name}}
                 },
                 ticks: { //http://www.chartjs.org/docs/#scales-radial-linear-scale
                     stepSize: 1, // 目盛の間隔
-                    max: 5, //最大値
+                    max: 15, //最大値
                     beginAtZero: true
                 }
             }

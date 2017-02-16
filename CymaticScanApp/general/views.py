@@ -53,13 +53,15 @@ class ResultView(generic.TemplateView):
         else:
             result_text = "ふつうの人"
 
-        list_name = "para1,para2,para3,para4"
-
         context = self.get_context_data(**kwargs)
         context["list_your_answer"] = list_your_answer
         context["ques_your_answer"] = ques_your_answer
         context["score_name_total_score"] = score_name_total_score
         context["result_text"] = result_text
-        context["list_name"] = list_name
+        context["para_A"] = total_score[0]
+        context["para_B"] = total_score[1]
+        context["para_C"] = total_score[2]
+        context["para_D"] = total_score[3]
+
 
         return self.render_to_response(context)
