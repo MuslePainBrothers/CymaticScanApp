@@ -1,0 +1,50 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    display: table;
+    position: relative;
+}
+
+.top_body{
+    background: url(../img/bg.png) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.ques_body{
+    background: url(../img/bg-pattern.png);
+    background-size: 800px;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+}
+
+.btn-dark {
+    border-radius: 0;
+    color: #fff;
+    background-color: rgba(0,0,0,0.4);
+}
+
+p {
+    margin: 10px;
+}
+
+.ques_box{
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-buttom: 50px;
+}
+
