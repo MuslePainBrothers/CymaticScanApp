@@ -32,7 +32,6 @@ class ResultView(generic.TemplateView):
 
         # パラメータ計算（サンプル）
         for ans in list_your_answer:
-            print(ans, ans.para_crazy, ans.para_aspect, ans.para_intdis, ans.para_madness)
             total_score[0] += ans.para_crazy
             total_score[1] += ans.para_aspect
             total_score[2] += ans.para_intdis
@@ -59,5 +58,10 @@ class ResultView(generic.TemplateView):
         context["ques_your_answer"] = ques_your_answer
         context["score_name_total_score"] = score_name_total_score
         context["result_text"] = result_text
+        context["crazy"] = total_score[0]
+        context["aspect"] = total_score[1]
+        context["intdis"] = total_score[2]
+        context["madness"] = total_score[3]
+
 
         return self.render_to_response(context)
