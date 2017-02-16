@@ -1,15 +1,26 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CymaticScanApp</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
 </head>
-<body>
-<h1>トップ画面</h1>
-このサイトの質問に答えるとあなたの心理をグラフにして表示します
-<br><br>
+<body class="top_body">
 
-<a href="{% url 'general:question' %}">質問画面へ</a>
+    <div class="text-vertical-center">
+        <h1>性格診断アプリ</h1>
+
+        <h3>＜注意！＞このサイトは嘘とデタラメが7割とユーモアが3割で作られています</h3>
+        <h3>診断結果を本気にしないようにしてください</h3>
+
+        <br>
+
+        <a href="{% url 'general:question' %}" class="btn btn-dark btn-lg">診断する</a>
+    </div>
 
 </body>
 </html>

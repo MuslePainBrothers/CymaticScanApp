@@ -1,34 +1,43 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CymaticScanApp</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
 </head>
-<body>
-<h1>質問画面</h1>
+<body class="ques_body">
+    <div class="ques_box">
 
-    <HR>
+        <form action="{% url 'general:result' %}" method="post">
+            {% csrf_token %}
 
-    <form action="{% url 'general:result' %}" method="post">
-        {% csrf_token %}
+                {% for question in questions %}
+                    {% with forloop.counter as count %}
 
-            {% for question in questions %}
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            {{ question.title }}: {{ question.text }}
+                        </div>
+                            {% for answer in question.answer.all %}
+                            <p>
+                                <input type="radio" name="answer{{count}}" value="{{answer.id}}" />
+                                &nbsp;
+                                {{ answer.text }}
+                            </p>
+                            {% endfor %}
+                        {% endwith %}
+                    </div>
 
-                {% with forloop.counter as count %}
-                    title = {{ question.title }}<br>
-                    text = {{ question.text }}<br>
+                {% endfor %}
+            <input class="btn btn-dark btn-lg" type="submit" value="送信"/>
+        </form>
 
-                    {% for answer in question.answer.all %}
-                        <input type="radio" name="answer{{count}}" value="{{answer.id}}" />
-                        {{ answer.text }}<br>
-                    {% endfor %}
-
-                {% endwith %}
-
-            <HR>
-        {% endfor %}
-        <input type="submit" value="送信"/>
-    </form>
+        <br><br>
+    </div>
 
 </body>
 </html>
