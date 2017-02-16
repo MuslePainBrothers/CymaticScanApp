@@ -58,10 +58,10 @@ class ResultView(generic.TemplateView):
         context["ques_your_answer"] = ques_your_answer
         context["score_name_total_score"] = score_name_total_score
         context["result_text"] = result_text
-        context["para_A"] = total_score[0]
-        context["para_B"] = total_score[1]
-        context["para_C"] = total_score[2]
-        context["para_D"] = total_score[3]
+        context["crazy"] = total_score[0]
+        context["aspect"] = total_score[1]
+        context["intdis"] = total_score[2]
+        context["madness"] = total_score[3]
 
 
         return self.render_to_response(context)

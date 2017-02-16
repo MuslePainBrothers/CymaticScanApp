@@ -41,25 +41,30 @@
 
 <h1>結果画面</h1>
 
+キチ= {{crazy}}
+アスペ= {{aspect}}
+池沼= {{intdis}}
+狂気= {{madness}}
+
 <HR>
 <canvas id="canvas" width="50" height="30"></canvas>
 <script type="text/javascript">
     var testData = {
-        labels: ["キチ", "アスペ", "なんとか", "かんとか"],
+        labels: ["キチ", "アスペ", "池沼", "狂気"],
         datasets: [
             {
-                fill: false, //線の中を塗るかどうか。falseで塗らない
+{#                fill: false, //線の中を塗るかどうか。falseで塗らない#}
                 borderColor: "rgba(0,222,122,0.5)", //線の色
                 pointBackgroundColor: "rgba(0,222,122,0.5)", //ポイントの背景色
                 pointBorderColor: "rgba(0,222,122,0.5)", //ポイントの境界線の色
-                data: ["{{para_A}}", "{{para_B}}", "{{para_C}}", "{{para_D}}"]
+                data: ["{{crazy}}", "{{aspect}}", "{{intdis}}", "{{madness}}"]
             },
-            {
-                pointRadius: 0, //これでpointは描画されない
-                backgroundColor: "rgba(255,92,92,0.3)", //線の中を埋める色
-                borderColor: "rgba(255,92,92,0.3)", //線の色
-                data: [1.5, 1.5, 1.5, 1.5]
-            }
+{#            {#}
+{#                pointRadius: 0, //これでpointは描画されない#}
+{#                backgroundColor: "rgba(255,92,92,0.3)", //線の中を埋める色#}
+{#                borderColor: "rgba(255,92,92,0.3)", //線の色#}
+{#                data: [1.5, 1.5, 1.5, 1.5]#}
+{#            }#}
         ]
     };
 
@@ -74,7 +79,7 @@
                 },
                 ticks: { //http://www.chartjs.org/docs/#scales-radial-linear-scale
                     stepSize: 1, // 目盛の間隔
-                    max: 15, //最大値
+                    max: 30, //最大値
                     beginAtZero: true
                 }
             }
@@ -82,5 +87,9 @@
     });
     stressFactorChart.options.legend.display = false; //これで凡例が表示されない
 </script>
+
+診断結果<br>
+あなたは {{ result_text }} です<br>
+
 </body>
 </html>
