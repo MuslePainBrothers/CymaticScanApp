@@ -1,40 +1,8 @@
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>CymaticScanApp</title>#}
-{#</head>#}
-{#<body>#}
-{#<h1>結果画面</h1>#}
-{##}
-{#<HR>#}
-{##}
-{#デバッグ用<br>#}
-{##}
-{#{% for ques, your_ans in ques_your_answer %}#}
-{#    {{ ques }}, {{ your_ans }}, [{{ your_ans.para_crazy }}, {{ your_ans.para_aspect }},#}
-{#    {{ your_ans.para_intdis }}, {{ your_ans.para_madness }}]<br>#}
-{#{% endfor %}#}
-{##}
-{#<br>#}
-{##}
-{#トータルスコア<br>#}
-{#{% for score_name, total_score in score_name_total_score %}#}
-{#    {{ score_name }}: total = {{ total_score }}<br>#}
-{#{% endfor %}#}
-{##}
-{#<br>#}
-{#診断結果<br>#}
-{#あなたは {{ result_text }} です<br>#}
-{##}
-{#</body>#}
-{#</html>#}
-
 <!doctype html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Chart.js v2.0</title>
+    <title>CymaticScanApp</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.2/Chart.min.js"></script>
 </head>
 <body>
@@ -53,18 +21,11 @@
         labels: ["キチ", "アスペ", "池沼", "狂気"],
         datasets: [
             {
-{#                fill: false, //線の中を塗るかどうか。falseで塗らない#}
                 borderColor: "rgba(0,222,122,0.5)", //線の色
                 pointBackgroundColor: "rgba(0,222,122,0.5)", //ポイントの背景色
                 pointBorderColor: "rgba(0,222,122,0.5)", //ポイントの境界線の色
                 data: ["{{crazy}}", "{{aspect}}", "{{intdis}}", "{{madness}}"]
             },
-{#            {#}
-{#                pointRadius: 0, //これでpointは描画されない#}
-{#                backgroundColor: "rgba(255,92,92,0.3)", //線の中を埋める色#}
-{#                borderColor: "rgba(255,92,92,0.3)", //線の色#}
-{#                data: [1.5, 1.5, 1.5, 1.5]#}
-{#            }#}
         ]
     };
 
