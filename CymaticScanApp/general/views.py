@@ -46,15 +46,20 @@ class ResultView(generic.TemplateView):
         ques_your_answer = zip(ques, list_your_answer)
         score_name_total_score = zip(score_name, total_score)
 
+        max= 0
+        for i in range(0, 3):
+            if max < total_score[i]:
+                max = total_score[i]
+
         # 結果のテキスト
-        if total_score[0] > 4:
-            result_text = "軽度のキチ"
-        elif total_score[1] > 5:
-            result_text = "軽度のアスペ"
-        elif total_score[2] > 3:
-            result_text = "どこにでもいる池沼"
-        elif total_score[3] > 6:
-            result_text = "かなりやばいやつ"
+        if total_score[0] == max:
+            result_text = "基地外タイプ"
+        elif total_score[1] == max:
+            result_text = "アスペタイプ"
+        elif total_score[2] == max:
+            result_text = "いけ沼タイプ"
+        elif total_score[3] == max:
+            result_text = "サイコパスタイプ"
         else:
             result_text = "ふつうの人"
 
