@@ -1,5 +1,7 @@
+from django.http import HttpResponse
 from django.views import generic
 from .models import Question, Answer
+from django.shortcuts import render_to_response, redirect
 
 
 class TopView(generic.TemplateView):
@@ -25,7 +27,10 @@ class ResultView(generic.TemplateView):
         # ユーザの解答
         list_your_answer = []
         for i in range(0, len(ques)):
-            list_your_answer.append(Answer.objects.get(pk=self.request.POST["answer"+str(i+1)]))
+            try:
+                list_your_answer.append(Answer.objects.get(pk=self.request.POST["answer"+str(i+1)]))
+            except:
+                return redirect("general:question")
 
         total_score = [0, 0, 0, 0]
         score_name = ["キチ度", "アスペ度", "池沼度", "狂気度"]
