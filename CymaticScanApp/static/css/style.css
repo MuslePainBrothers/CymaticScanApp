@@ -48,3 +48,19 @@ p {
     margin-buttom: 50px;
 }
 
+.result_box_left{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 400px;
+    height: 64px;
+
+    margin: auto;
+    float : left;
+    font-size: 20px;
+}
+.result_box_right{
+    margin: auto;
+    float : right;
+}
+
