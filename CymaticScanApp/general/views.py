@@ -49,7 +49,7 @@ class ResultView(generic.TemplateView):
         score_name_total_score = zip(score_name, total_score)
 
         max= 0
-        for i in range(0, 3):
+        for i in range(0, 5):
             if max < total_score[i]:
                 max = total_score[i]
 
