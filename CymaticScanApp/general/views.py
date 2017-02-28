@@ -32,15 +32,17 @@ class ResultView(generic.TemplateView):
             except:
                 return redirect("general:question")
 
-        total_score = [0, 0, 0, 0]
-        score_name = ["キチ度", "アスペ度", "池沼度", "狂気度"]
+        total_score = [0, 0, 0, 0, 0, 0]
+        score_name = ["キチ度", "アスペ度", "サイコパス度", "鬱度", "糖質度", "コミュ症度"]
 
         # パラメータ計算（サンプル）
         for ans in list_your_answer:
             total_score[0] += ans.para_crazy
             total_score[1] += ans.para_aspect
-            total_score[2] += ans.para_intdis
-            total_score[3] += ans.para_madness
+            total_score[2] += ans.para_psychopath
+            total_score[3] += ans.para_depression
+            total_score[4] += ans.para_schizophrenia
+            total_score[5] += ans.para_communication_disorder
 
         # デバッグ用
         ques_your_answer = zip(ques, list_your_answer)
@@ -57,9 +59,13 @@ class ResultView(generic.TemplateView):
         elif total_score[1] == max:
             result_text = "アスペタイプ"
         elif total_score[2] == max:
-            result_text = "いけ沼タイプ"
-        elif total_score[3] == max:
             result_text = "サイコパスタイプ"
+        elif total_score[3] == max:
+            result_text = "鬱タイプ"
+        elif total_score[4] == max:
+            result_text = "糖質タイプ"
+        elif total_score[5] == max:
+            result_text = "コミュ症タイプ"
         else:
             result_text = "ふつうの人"
 
@@ -70,9 +76,9 @@ class ResultView(generic.TemplateView):
         context["result_text"] = result_text
         context["crazy"] = total_score[0]
         context["aspect"] = total_score[1]
-        context["intdis"] = total_score[2]
-        context["madness"] = total_score[3]
-
+        context["psychopath"] = total_score[2]
+        context["depression"] = total_score[3]
+        context["schizophrenia"] = total_score[4]
+        context["communication_disorder"] = total_score[5]
 
         return self.render_to_response(context)
-
