@@ -15,8 +15,10 @@ class AnswerAdmin(admin.ModelAdmin):
         ('答え', {'fields': ['text']}),
         ('キチ度', {'fields': ['para_crazy']}),
         ('アスペ度', {'fields': ['para_aspect']}),
-        ('池沼度', {'fields': ['para_intdis']}),
-        ('狂気度', {'fields': ['para_madness']}),
+        ('サイコパス度', {'fields': ['para_psychopath']}),
+        ('鬱度', {'fields': ['para_depression']}),
+        ('糖質度', {'fields': ['para_schizophrenia']}),
+        ('コミュ症度', {'fields': ['para_communication_disorder']}),
     ]
 
 admin.site.register(Question, QuestionAdmin)

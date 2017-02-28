@@ -5,8 +5,10 @@ class Answer(models.Model):
     text = models.CharField(max_length=200)
     para_crazy = models.IntegerField()
     para_aspect = models.IntegerField()
-    para_intdis = models.IntegerField()
-    para_madness = models.IntegerField()
+    para_psychopath = models.IntegerField()
+    para_depression = models.IntegerField()
+    para_schizophrenia = models.IntegerField()
+    para_communication_disorder = models.IntegerField()
 
     def __str__(self):
         return self.text
