@@ -75,3 +75,4 @@ class ResultView(generic.TemplateView):
 
 
         return self.render_to_response(context)
+
