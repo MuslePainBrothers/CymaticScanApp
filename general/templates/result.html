@@ -48,11 +48,15 @@
         <div class="result_box_left">
             あなたは <strong>{{ result_text }}</strong> です<br>
             一言コメント<br>
+            <button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">結果をツイートする</button>
         </div>
 
         <div class="result_box_right">
             <canvas id="radarChart" height="450" width="450"></canvas>
             <div id="legend"></div>
+        </div>
+
+        <div>
         </div>
 </div>
 </body>

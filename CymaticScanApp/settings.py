@@ -136,7 +136,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-f = open('consumer.txt', 'r')
+path = os.path.dirname(os.path.abspath(__file__))
+f = open(path + '/consumer.txt', 'r')
 dic = ast.literal_eval(f.read())
 SOCIAL_AUTH_TWITTER_KEY = dic['consumer_key']
 SOCIAL_AUTH_TWITTER_SECRET = dic['consumer_secret']

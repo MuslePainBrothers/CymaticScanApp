@@ -13,8 +13,7 @@
 
 ## 準備
 ``` Consumer.txt
-{'consumer_key': '*****'}
-{'consumer_secret': '*****'}
+{'consumer_key': '*****', 'consumer_secret': '*****'}
 ```
 
 と記述した`consumer.txt`を`CymaticScanApp/setting.py`と同じ階層におく。
