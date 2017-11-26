@@ -143,3 +143,5 @@ SOCIAL_AUTH_TWITTER_KEY = dic['consumer_key']
 SOCIAL_AUTH_TWITTER_SECRET = dic['consumer_secret']
 f.close()
 
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
