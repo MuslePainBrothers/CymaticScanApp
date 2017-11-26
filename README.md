@@ -11,6 +11,17 @@
 * フレームワーク django
 * python 3.6.3
 
+## 起動
+```
+python manage.py runserver 0.0.0.0:8080
+```
+
+## 管理サイト
+
+http://0.0.0.0:8080/admin/
+* user: admin
+* password:adminadmin
+
 ## 画面
 * トップ画面
 ![top.jpeg](https://raw.githubusercontent.com/MuslePainBrothers/CymaticScanApp/develop/screen_shot/top.jpeg)
