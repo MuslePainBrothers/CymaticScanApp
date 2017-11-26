@@ -11,6 +11,14 @@
 * フレームワーク django
 * python 3.6.3
 
+## 準備
+``` Consumer.txt
+{'consumer_key': '*****'}
+{'consumer_secret': '*****'}
+```
+
+と記述した`consumer.txt`を`CymaticScanApp/setting.py`と同じ階層におく。
+
 ## 起動
 ```
 python manage.py runserver 0.0.0.0:8080
