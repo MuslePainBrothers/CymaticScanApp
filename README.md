@@ -12,7 +12,13 @@
 * python 3.6.3
 
 ## 準備
-``` Consumer.txt
+1. pip install
+
+```
+pip install -r requirements.txt
+```
+2. consumer.txt の配置
+``` 
 {'consumer_key': '*****', 'consumer_secret': '*****'}
 ```
 
