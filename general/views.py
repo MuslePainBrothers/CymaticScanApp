@@ -3,6 +3,8 @@ from django.views import generic
 from .models import Question, Answer
 from django.shortcuts import render_to_response, redirect
 from requests_oauthlib import OAuth1Session
+import json
+from CymaticScanApp import settings
 
 
 class TopView(generic.TemplateView):
@@ -87,4 +89,24 @@ class ResultView(generic.TemplateView):
 
 class Tweet(generic.TemplateView):
     template_name = "tweet.html"
+
+    def post(self):
+        # ツイート投稿用のURL
+        url = "https://api.twitter.com/1.1/statuses/update.json"
+        # Tweetを作成
+        params = {"status": 'test'}
+        request_token_url = "https://api.twitter.com/oauth/request_token"
+        oauth = OAuth1Session(client_key=settings.SOCIAL_AUTH_TWITTER_KEY,
+                              client_secret=settings.SOCIAL_AUTH_TWITTER_SECRET
+                              )
+        response = oauth.fetch_request_token(request_token_url)
+        # OAuth認証して、POSTで投稿
+        twitter = OAuth1Session(settings.SOCIAL_AUTH_TWITTER_KEY,
+                                settings.SOCIAL_AUTH_TWITTER_SECRET,
+                                response["oauth_token"],
+                                response["oauth_token_secret"])
+        req = twitter.post(url, params=params)
+
+        # レスポンスコードを返す
+        return req.status_code
 
