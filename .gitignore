@@ -1,4 +1,5 @@
 .idea
 .DS_Store
-general/__pycashe__
-CymaticScanApp/__pycashe__
+__pycache__/
+*.py[cod]
+.python-version
