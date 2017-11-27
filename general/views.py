@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.views import generic
 from .models import Question, Answer
 from django.shortcuts import render_to_response, redirect
+from requests_oauthlib import OAuth1Session
 
 
 class TopView(generic.TemplateView):
@@ -82,3 +83,8 @@ class ResultView(generic.TemplateView):
         context["communication_disorder"] = total_score[5]
 
         return self.render_to_response(context)
+
+
+class Tweet(generic.TemplateView):
+    template_name = "tweet.html"
+

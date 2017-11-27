@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^$', views.TopView.as_view(), name='top'),
     url(r'^question/$', views.QuestionView.as_view(), name='question'),
     url(r'^result/$', views.ResultView.as_view(), name='result'),
+    url(r'^tweet/$', views.Tweet.as_view(), name='tweet'),
 ]
