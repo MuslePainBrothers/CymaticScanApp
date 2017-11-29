@@ -5,7 +5,11 @@
     <title>Tweet</title>
 </head>
 <body>
-<a href="{% url 'general:tweet' %}" methods="post">ツイートする</a>
+<form action="{% url 'general:tweet' %}" method="post">
+    {% csrf_token %}
+
+    <input class="btn btn-dark btn-lg" type="submit" value="Tweetする"/>
+</form>
 <br/>
 <a href="{% url 'general:top' %}" class="btn btn-dark btn-lg">Topページに戻る</a>
 </body>
