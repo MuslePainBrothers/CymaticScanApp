@@ -4,3 +4,4 @@ __pycache__/
 *.py[cod]
 .python-version
 consumer.txt
+db.sqlite3
